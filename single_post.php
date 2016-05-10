@@ -6,8 +6,13 @@
 
   $db = new Database();
 
-  $query = "SELECT * FROM posts ORDER BY id DESC";
+  $id = $_GET['id'];
+  $query_data = array(':id'=>$id);
+
+  $query = "SELECT * FROM posts WHERE id=$id";
   $posts = $db->select($query);
+
+
 
  ?>
 <!DOCTYPE html>
@@ -52,15 +57,17 @@
 
         <div class="col-sm-8 blog-main">
 
-          <?php
-            foreach($posts as $item)  :?>
+          <?php foreach($posts as $item) : ?>
           <div class="blog-post">
             <h2 class="blog-post-title"><?php echo $item['title']; ?></h2>
             <p class="blog-post-meta"> on <?php echo formatDate($item['date']); ?> by <a href="#"><?php echo $item['author']; ?></a></p>
-            <img src="images/<?php echo $item['image'];?>" style="height:200px; width: 200px; float: left; margin-right: 20px; margin-bottom: 10px;" />
-            <p style="text-align: justify;"><?php echo substr($item['content'],0,300); ?></p>
-            <a id="readmore" href="single_post.php?id=<?php echo $item['id'];?>">Read More</a>
+            <img src="images/<?php echo $item['image'];?>" style="height:400px; width: 400px; float: left; margin-right: 20px; margin-bottom: 10px;" />
+            <p style="text-align: justify;"><?php echo $item['content']; ?></p>
           </div><!-- /.blog-post -->
         <?php endforeach; ?>
 
         </div><!-- /.blog-main -->
+<?php
+include "includes/sidebar.php";
+include "includes/footer.php";
+ ?>

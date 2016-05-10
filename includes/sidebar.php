@@ -15,7 +15,7 @@ $cats = $db->select($query);
     <h4>Categories</h4>
     <ol class="list-unstyled">
       <?php foreach($cats as $item) : ?>
-      <li><a href="#"><?php echo $item['title']; ?></a></li>
+      <li><a href="category.php?id=<?php echo $item['id']; ?>"><?php echo $item['title']; ?></a></li>
     <?php endforeach; ?>
     </ol>
   </div>

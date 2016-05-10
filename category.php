@@ -4,9 +4,11 @@
   include "libs/database.php";
   include "functions.php";
 
+  $id = $_GET['id'];
+
   $db = new Database();
 
-  $query = "SELECT * FROM posts ORDER BY id DESC";
+  $query = "SELECT * FROM posts WHERE category_id='$id'";
   $posts = $db->select($query);
 
  ?>
@@ -64,3 +66,7 @@
         <?php endforeach; ?>
 
         </div><!-- /.blog-main -->
+<?php
+include "includes/sidebar.php";
+include "includes/footer.php";
+ ?>
