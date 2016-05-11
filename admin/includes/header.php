@@ -88,7 +88,7 @@
             <tr>
               <td><?php echo $item2['id']; ?></td>
               <td>
-                <a href="edit_post.php?id=<?php echo $item2['id'];?>">
+                <a href="edit_category.php?id=<?php echo $item2['id'];?>">
                 <?php echo $item2['title']; ?></a>
               </td>
             </tr>
