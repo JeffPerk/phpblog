@@ -42,7 +42,6 @@
       $insert = $this->DBH->query($query);
       if($insert) {
         return $insert;
-        // header('location: index.php?insert= Post inserted...');
       } else {
         echo "Post did not insert...";
       }
@@ -52,7 +51,6 @@
       $update = $this->DBH->query($query);
       if($update) {
         return $update;
-        // header('location: index.php?update= Post updated...');
       } else {
         echo "Post did not update...";
       }
@@ -62,7 +60,6 @@
       $delete = $this->DBH->query($query);
       if($delete) {
         return $delete;
-        // header('location: index.php?delete= Post deleted...');
       } else {
         echo "Post did not delete...";
       }
