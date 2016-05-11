@@ -8,7 +8,8 @@
 
   $query = "SELECT * FROM posts";
   $posts = $db->select($query);
-
+  $query2 = "SELECT * FROM categories";
+  $cats = $db->select($query2);
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +34,8 @@
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="index.php">Dashboard</a>
-          <a class="blog-nav-item" href="#">Add New Post</a>
-          <a class="blog-nav-item" href="#">Add New Category</a>
+          <a class="blog-nav-item" href="add_post.php">Add New Post</a>
+          <a class="blog-nav-item" href="add_category.php">Add New Category</a>
           <a class="blog-nav-item pull-right" href="../index.php">View Blog</a>
           <a class="blog-nav-item pull-right" href="logout.php">Logout</a>
         </nav>
@@ -47,6 +48,11 @@
 
         <div class="col-sm-12 blog-main">
           <br/>
+          <?php
+          if(isset($_GET['msg'])) {
+            echo "<div class='alert alert-success'>".$_GET['msg']."</div>";
+          }
+           ?>
           <table class="table table-striped">
             <tr align="center">
               <td colspan="4"><h1>Manage Your Posts:</h1></td>
@@ -60,9 +66,31 @@
             <?php foreach($posts as $item) :?>
             <tr>
               <td><?php echo $item['id']; ?></td>
-              <td><?php echo $item['title']; ?></td>
+              <td>
+                <a href="edit_post.php?id=<?php echo $item['id'];?>">
+                <?php echo $item['title']; ?></a>
+              </td>
               <td><?php echo $item['author']; ?></td>
               <td><?php echo formatDate($item['date']); ?></td>
+            </tr>
+          <?php endforeach; ?>
+          </table>
+
+          <table class="table table-striped">
+            <tr align="center">
+              <td colspan="4"><h1>Manage Your Categories:</h1></td>
+            </tr>
+            <tr>
+              <th>Category ID</th>
+              <th>Category Title</th>
+            </tr>
+            <?php foreach($cats as $item2) :?>
+            <tr>
+              <td><?php echo $item2['id']; ?></td>
+              <td>
+                <a href="edit_post.php?id=<?php echo $item2['id'];?>">
+                <?php echo $item2['title']; ?></a>
+              </td>
             </tr>
           <?php endforeach; ?>
           </table>
