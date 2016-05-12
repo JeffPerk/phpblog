@@ -54,8 +54,7 @@
 
         <div class="col-sm-8 blog-main">
 
-          <?php
-            foreach($posts as $item)  :?>
+          <?php foreach($posts as $item)  :?>
           <div class="blog-post">
             <h2 class="blog-post-title"><?php echo $item['title']; ?></h2>
             <p class="blog-post-meta"> on <?php echo formatDate($item['date']); ?> by <a href="#"><?php echo $item['author']; ?></a></p>
